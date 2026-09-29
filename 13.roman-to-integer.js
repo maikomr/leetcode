@@ -21,16 +21,14 @@ const romanValues = {
  */
 var romanToInt = function (s) {
     let total = 0;
+    let prev = 0;
 
     for (let i = s.length - 1; i >= 0; i--) {
         const value = romanValues[s[i]];
-        const prevValue = romanValues[s[i + 1]] || 0;
 
-        if (value < prevValue) {
-            total -= value;
-        } else {
-            total += value;
-        }
+        total += value < prev ? -value : value;
+
+        prev = value;
     }
 
     return total;
