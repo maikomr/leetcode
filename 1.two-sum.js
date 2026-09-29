@@ -11,17 +11,17 @@
  * @return {number[]}
  */
 var twoSum = function (nums, target) {
-    var indexes = {};
+    const indexes = new Map();
 
     for (let i = 0; i < nums.length; i++) {
-        n = nums[i];
-        complement = target - n;
+        const n = nums[i];
+        const complement = target - n;
 
-        if (indexes.hasOwnProperty(complement)) {
-            return [indexes[complement], i];
+        if (indexes.has(complement)) {
+            return [indexes.get(complement), i];
         }
 
-        indexes[n] = i;
+        indexes.set(n, i);
     }
 };
 // @lc code=end
